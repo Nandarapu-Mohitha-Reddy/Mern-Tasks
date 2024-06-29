@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function alphabetizeString(str) {
+        let charArray = str.split("");
+        let sortedArray = charArray.sort();
+        let sortedStr = sortedArray.join("");
+        return sortedStr;
+      }
+      let exampleString = "webmaster";
+      console.log(alphabetizeString(exampleString));
+    </script>
+  </body>
+</html>

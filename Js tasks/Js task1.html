@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function reverseNumber(num) {
+        let numStr = num.toString();
+        let numArr = numStr.split("");
+        let reversedArr = numArr.reverse();
+        let reversedStr = reversedArr.join("");
+        let reversedNum = parseInt(reversedStr);
+        return reversedNum;
+      }
+      let x = 32243;
+      console.log(reverseNumber(x));
+    </script>
+  </body>
+</html>

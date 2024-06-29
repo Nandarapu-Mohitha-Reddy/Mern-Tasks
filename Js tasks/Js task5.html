@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .error {
+        border: 1px solid red;
+      }
+      .error-message {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="myForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" />
+      <span class="error-message" id="nameError">This field is required</span>
+      <br /><br />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" />
+      <span class="error-message" id="emailError"
+        >A valid email address is required</span
+      >
+      <br /><br />
+
+      <label for="website">Website:</label>
+      <input type="url" id="website" name="website" />
+      <span class="error-message" id="websiteError"
+        >A valid URL is required</span
+      >
+      <br /><br />
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message"></textarea>
+      <span class="error-message" id="messageError"
+        >This field is required</span
+      >
+      <br /><br />
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <script>
+      document
+        .getElementById("myForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          let isValid = true;
+
+          const name = document.getElementById("name");
+          const nameError = document.getElementById("nameError");
+          if (name.value.trim() === "") {
+            name.classList.add("error");
+            nameError.style.display = "inline";
+            isValid = false;
+          } else {
+            name.classList.remove("error");
+            nameError.style.display = "none";
+          }
+
+          const email = document.getElementById("email");
+          const emailError = document.getElementById("emailError");
+          const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailPattern.test(email.value.trim())) {
+            email.classList.add("error");
+            emailError.style.display = "inline";
+            isValid = false;
+          } else {
+            email.classList.remove("error");
+            emailError.style.display = "none";
+          }
+
+          const website = document.getElementById("website");
+          const websiteError = document.getElementById("websiteError");
+          try {
+            new URL(website.value.trim());
+            website.classList.remove("error");
+            websiteError.style.display = "none";
+          } catch (_) {
+            website.classList.add("error");
+            websiteError.style.display = "inline";
+            isValid = false;
+          }
+
+          const message = document.getElementById("message");
+          const messageError = document.getElementById("messageError");
+          if (message.value.trim() === "") {
+            message.classList.add("error");
+            messageError.style.display = "inline";
+            isValid = false;
+          } else {
+            message.classList.remove("error");
+            messageError.style.display = "none";
+          }
+
+          if (isValid) {
+            alert("Form submitted successfully!");
+            document.getElementById("myForm").submit();
+          }
+        });
+    </script>
+  </body>
+</html>
